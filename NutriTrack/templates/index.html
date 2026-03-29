@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Food Tracker</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-home">
+	<main class="app-shell">
+		<section class="glass-card hero-card fade-in">
+			<p class="eyebrow">Nourish With Intention</p>
+			<h1>Food Tracker</h1>
+			<p class="lead">Track meals with ease, monitor macros, and stay consistent with a dashboard that feels as good as your goals.</p>
+			<div class="actions">
+				<a class="btn btn-primary" href="{{ url_for('main.add_food') }}">Add and Manage Foods</a>
+				<a class="btn btn-soft" href="{{ url_for('main.view_food') }}">View Foods</a>
+			</div>
+			<div class="chips">
+				<span class="chip">Protein</span>
+				<span class="chip">Carbs</span>
+				<span class="chip">Fats</span>
+				<span class="chip">Calories</span>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

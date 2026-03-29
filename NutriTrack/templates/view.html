@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>View Foods | Food Tracker</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="page-view">
+	<main class="app-shell app-shell-wide">
+		<header class="topbar fade-in">
+			<h1>Foods Overview</h1>
+			<nav class="nav-links">
+				<a class="btn btn-soft" href="{{ url_for('main.index') }}">Home</a>
+				<a class="btn btn-soft" href="{{ url_for('main.add_food') }}">Add and Manage Foods</a>
+			</nav>
+		</header>
+
+		<section class="glass-card fade-in" style="animation-delay: 120ms;">
+			{% if foods %}
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Food</th>
+							<th>Protein (g)</th>
+							<th>Carbs (g)</th>
+							<th>Fats (g)</th>
+							<th>Calories</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for food in foods %}
+						<tr>
+							<td>{{ food.name }}</td>
+							<td>{{ '%.2f'|format(food.proteins) }}</td>
+							<td>{{ '%.2f'|format(food.carbs) }}</td>
+							<td>{{ '%.2f'|format(food.fats) }}</td>
+							<td>{{ '%.2f'|format(food.calories) }} kcal</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4">Total Calories</td>
+							<td>
+								{{ '%.2f'|format(foods|sum(attribute='calories')) }} kcal
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			{% else %}
+			<p class="muted">No foods to show yet. Add your first food item to begin tracking.</p>
+			{% endif %}
+		</section>
+	</main>
+</body>
+</html>
