@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from foodtracker.models import Food
-from foodtracker.extensions import db
+from ..models import Food
+from ..extensions import db
 main = Blueprint('main', __name__)
 
 @main.route('/')
